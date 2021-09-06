@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:url("image.jpg");
+            background-position: center;
+            background-size: cover;
+
+        }
+        .container{
+            height: 50vh;
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content:first baseline;
+            align-items: center;
+            color: rgb(122, 34, 52);
+            font-weight: 700;
+            border:2px solid black;
+            border-radius: 15px;
+            
+        }
+        .containerBox{
+            width: 100%;
+            height:90vh;
+            display: grid;
+            justify-content:center;
+            align-items: center;
+        }
+        #btn{
+            display: inline-block;
+            width:100px;
+            font-weight: 700;
+            font-size: bold;
+            margin: 5px;
+            background-color: transparent;
+            outline: none;
+            border-radius: 15px;
+        }
+        #btn1{
+            display: inline-block;
+            width:100px;
+            font-weight: 700;
+            font-size: bold;
+            margin: 5px;
+            background-color: transparent;
+            outline: none;
+            border-radius: 15px;
+        }
+        #display{
+            width:55px;
+        
+        }
+        #input{
+            border-radius: 15px;
+            width: 120px;
+            background-color: transparent;
+            outline: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="containerBox">
+        <div class="container">
+            <span><h2>Multiplication Table</h2></span>
+            <span><h3>Enter the number</h3></span>
+            <input type="text" id="input">
+            <div class="btn">
+                <button id="btn">Generate</button>
+                <button id="btn1" onclick=window.location.reload()>Reset</button>
+            </div>
+            <div id="display"></div>
+        </div>
+    </div>
+ 
+    
+    <script>
+        let inputbox=document.getElementById("input");
+        let btnbox=document.getElementById("btn");
+        let displaybox=document.getElementById("display");
+        btnbox.onclick=table;
+        function table(){
+            let number=inputbox.value;
+            for(let i=1;i<=10;i++){
+                res=number*i;
+                document.getElementById("display").innerHTML+=(" "+number+"x"+i+"="+res+"   ");
+                document.getElementById("btn").onclick = function() {
+                //disable
+                this.disabled = true;
+                }
+            }
+        }
+   
+    </script>
+</body>
+</html>
