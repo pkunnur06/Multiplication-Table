@@ -7,27 +7,26 @@
     <title>Document</title>
     <style>
         body{
-            background:url("image.jpg");
+            background:url("math\ image.jpg");
             background-position: center;
             background-size: cover;
-
         }
         .container{
-            height: 50vh;
+            /* height: 80vh; */
             width: auto;
             display: flex;
             flex-direction: column;
             justify-content:first baseline;
             align-items: center;
-            color: rgb(122, 34, 52);
-            font-weight: 700;
-            border:2px solid black;
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
             border-radius: 15px;
             
         }
         .containerBox{
             width: 100%;
-            height:90vh;
+            /* height:90vh; */
             display: grid;
             justify-content:center;
             align-items: center;
@@ -38,7 +37,7 @@
             font-weight: 700;
             font-size: bold;
             margin: 5px;
-            background-color: transparent;
+            background-color: white;
             outline: none;
             border-radius: 15px;
         }
@@ -48,55 +47,110 @@
             font-weight: 700;
             font-size: bold;
             margin: 5px;
-            background-color: transparent;
+            background-color: white;
             outline: none;
             border-radius: 15px;
-        }
-        #display{
-            width:55px;
-        
         }
         #input{
+            border-color: rgb(170, 29, 36);
+            margin-top: 15px;
+            margin-bottom: 15px;
             border-radius: 15px;
-            width: 120px;
-            background-color: transparent;
+            width: 300px;
+            /* background-color: transparent; */
             outline: none;
             text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+        #input1{
+            border-color: rgb(179, 22, 56);
+            margin-bottom: 15px;
+            border-radius: 15px;
+            width: 300px;
+            /* background-color: transparent; */
+            outline: none;
+            text-align: center;
+            color:black;
+            font-weight: bold;
+        }
+        #length{
+            border-color: rgb(173, 21, 34);
+            margin-bottom: 15px;
+            border-radius: 15px;
+            width: 300px;
+            /* background-color: transparent; */
+            outline: none;
+            text-align: center;
+            color:black;
+            font-weight: bold;
+        }
+        .spanClass{
+            height: 50px;
+            text-align: center;
+            margin-bottom: 15px;
+            
+        }
+        #display{
+            display: grid;
+            grid-template-columns: repeat(8 ,1fr);
+          
+        }
+        .inner{
+            display: grid;
+            justify-content: center;
+            align-items : center;
+            padding: 5px;
+            margin: 2px;
+            border-radius: 5px;
+            border:2px solid rgb(41, 12, 40);
         }
     </style>
 </head>
 <body>
     <div class="containerBox">
         <div class="container">
-            <span><h2>Multiplication Table</h2></span>
-            <span><h3>Enter the number</h3></span>
-            <input type="text" id="input">
+            <span class="spanClass"><h1>Multiplication Table</h1></span>
+            <input type="text" id="input"placeholder="Enter the start number from">
+            <input type="text" id="input1"placeholder="To Enter the end number">
+            <input type="text" id="length" placeholder="Enter the number of multiples(1 to 10 or more)">
             <div class="btn">
                 <button id="btn">Generate</button>
                 <button id="btn1" onclick=window.location.reload()>Reset</button>
             </div>
             <div id="display"></div>
+
         </div>
     </div>
- 
-    
     <script>
         let inputbox=document.getElementById("input");
+        let inputbox1=document.getElementById("input1");
+        let lengthbox1=document.getElementById("length");
         let btnbox=document.getElementById("btn");
         let displaybox=document.getElementById("display");
         btnbox.onclick=table;
         function table(){
-            let number=inputbox.value;
-            for(let i=1;i<=10;i++){
-                res=number*i;
-                document.getElementById("display").innerHTML+=(" "+number+"x"+i+"="+res+"   ");
-                document.getElementById("btn").onclick = function() {
-                //disable
-                this.disabled = true;
-                }
+            let number=parseInt(inputbox.value);
+            let loop=parseInt(inputbox1.value);
+            let length=parseInt(lengthbox1.value);
+            let finalHtml = ""
+            for(let k=number;k<=loop;k++){
+                     let html = `<div class='inner'>`
+                for(let i=1;i<=length;i++){
+                    res=k*i;
+                    html +=`<div>${k}x${i}=${res}</div>`; 
+                }   
+                html += "</div>"
+                finalHtml += html
             }
+            document.getElementById("display").innerHTML = finalHtml;
+            document. getElementById("btn").style.pointerEvents="none";
+           
         }
-   
+        // div.className = "demo";
+                // var div = document.createElement("div");
+                // document.body.innerHTML=html;
     </script>
+
 </body>
-</html>
+</html> 
